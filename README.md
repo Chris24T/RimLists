@@ -4,7 +4,7 @@ The modlist is intended for use with RimPy Mod Manager For Rimworld.
 
 # Usage
 
-1) Download all desired mods from the collection on steam.
+1) Download all desired mods from the collection on steam and the release build exe or the main.py script.
 
 2) Run the script, terminal window will open, follow prompts.
 
@@ -15,6 +15,7 @@ For now:
 - Does not includes any non-steam mods (again, you can just manually add them after modlist creation)
 
 ## Requirements
+- is using the py script, >=python 3.9 is needed
 - Steam is installed
 - RimWorld is installed via Steam
 - All mods you want in the list must be downloaded - required since i cant find a way to get the mod package ids from the mod Steam ids
