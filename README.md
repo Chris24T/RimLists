@@ -6,16 +6,11 @@ The modlist is intended for use with RimPy Mod Manager For Rimworld.
 
 1) Download all desired mods from the collection on steam.
 
-2) Run the script, terminal window will open prompting for a Steam Collection URL
+2) Run the script, terminal window will open, follow prompts.
 
-3) Write the target workshop collection URL into the terminal and hit enter.
-
-4) If Steam/ Rimworld / Rimpy Modlist install paths cannot be automatically resolved, terminal will prompt for manual input
-
-5) Modlist will be created in RimPy modlist folder, or provided path if RimPy could not be found. Modlist name will be the same as the collection title - terminal will print modlist location and name
+3) Modlist will be created at chosen path (default RimPy modlist folder) with chosen name (default collection title)
 
 For now:
-- The script assumes the user wants the modlist to be saved to RimPy modlist directory. This is fixed, unless you dont have RimPy installed.
 - Only includes base game, no DLCs in modlist (you can just add them back manually after modlist creation)
 - Does not includes any non-steam mods (again, you can just manually add them after modlist creation)
 
