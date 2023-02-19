@@ -180,4 +180,5 @@ if __name__ == '__main__':
     package_ids = findModPackageIds(entries)
     buildXMLModlist(package_ids)
     print(f"\nModList: {workshop_collection_title} , created in: {rimpy_modlists_path}")
-    input("Press any key to close...")
+
+    input("\nPress any key to close...")
