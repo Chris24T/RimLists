@@ -4,9 +4,9 @@ The modlist is intended for use with RimPy Mod Manager For Rimworld.
 
 # Usage
 
-1) Download all desired mods from the collection on steam and the release build exe or the main.py script.
+1) Download all desired mods from the collection on steam and the release build .exe or the main.py script.
 
-2) Run the script, terminal window will open, follow prompts.
+2) Run the .exe/script, terminal window will open, follow prompts.
 
 3) Modlist will be created at chosen path (default RimPy modlist folder) with chosen name (default collection title)
 
