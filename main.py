@@ -1,8 +1,3 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
 import requests
 from bs4 import BeautifulSoup
 import winreg
@@ -175,7 +170,6 @@ def buildXMLModlist(package_ids):
     tree.write(save_path, encoding='utf-8', xml_declaration=True)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     url = getCollectionUrl()
     entries = getCollectionEntries(url)
@@ -186,3 +180,4 @@ if __name__ == '__main__':
     package_ids = findModPackageIds(entries)
     buildXMLModlist(package_ids)
     print(f"\nModList: {workshop_collection_title} , created in: {rimpy_modlists_path}")
+    input("Press any key to close...")
