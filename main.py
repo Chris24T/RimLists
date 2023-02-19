@@ -21,6 +21,22 @@ workshop_collection_title = ""
 rimpy_modlists_path = os.path.normpath(os.path.join(os.environ["APPDATA"], "../LocalLow", "RimPy Mod Manager\ModLists"))
 
 
+def get_modlist_install_path():
+    global rimpy_modlists_path
+    inp = input("Enter modlist save path (leave empty for RimPy Modlists folder): ")
+    if not len(inp):
+        inp = rimpy_modlists_path
+
+    while not os.path.exists(inp):
+        print(f"The path '{inp}' does not exist")
+        inp = input("Enter modlist save path (leave empty for RimPy Modlists folder): ")
+        if not len(inp):
+            inp = rimpy_modlists_path
+
+    rimpy_modlists_path = inp
+    print("     " + rimpy_modlists_path)
+
+
 def set_rimworld_version():
     global rimworld_version
     try:
@@ -54,7 +70,7 @@ def get_rimworld_install_path():
                 if "installdir" in line:
                     rimworld_install_path = os.path.join(steam_apps_path, "common", line.strip().split('"')[3])
     except FileNotFoundError:
-        print("Unable to automatically find RimWorld install directory")
+        print("Unable to find RimWorld install directory")
         rimworld_install_path = input("Please enter your full RimWorld install path: ")
 
 
@@ -64,13 +80,13 @@ def get_steam_install_path():
         hkey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, "SOFTWARE\WOW6432Node\Valve\Steam")
         steam_install_path = winreg.QueryValueEx(hkey, "InstallPath")[0]
     except:
-        print("Unable to automatically find Steam install directory")
+        print("Unable to find Steam install directory")
         steam_install_path = input("Please enter Steam install path: ")
 
 
 # read a url from input
 def getCollectionUrl():
-    return input("Input the URL of the steam collection: ")
+    return input("Enter RimWorld Steam workshop collection URL: ")
 
 
 def parse(content):
@@ -78,9 +94,18 @@ def parse(content):
     id_nodes = soup.find_all("div", class_="collectionItem")
     ids = [node.get("id")[11::] for node in id_nodes if node.has_attr("id")]
 
+    if not len(ids):
+        print(
+            f"No mod collection could be found at provided URL")
+        exit(1)
+
     global workshop_collection_title
     workshop_collection_title = soup.find("div", class_="workshopItemTitle").decode_contents()
 
+    inp = input("Enter modlist name (leave empty for collection title): ")
+    if len(inp):
+        workshop_collection_title = inp
+    print("     " + workshop_collection_title)
     return ids
 
 
@@ -91,10 +116,11 @@ def getCollectionEntries(url):
             return parse(response.content)
         else:
             print(
-                "There was an error in fetching the inputted URL content. Please make sure the URL is correct and you are connected to a network")
+                "\nThere was an error in fetching the URL content. Please make sure the URL is correct and you are connected to a network.")
             exit(1)
     except:
-        print("There was an error in fetching the inputted URL content. Please make sure the URL is valid")
+        print(
+            "\nThere was an error in fetching the URL content. Please make sure the URL is a valid RimWorld Steam workshop collection.")
         exit(1)
 
 
@@ -151,11 +177,12 @@ def buildXMLModlist(package_ids):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    get_steam_install_path()
-    get_rimworld_install_path()
-    set_rimworld_version()
     url = getCollectionUrl()
     entries = getCollectionEntries(url)
+    get_steam_install_path()
+    get_modlist_install_path()
+    get_rimworld_install_path()
+    set_rimworld_version()
     package_ids = findModPackageIds(entries)
     buildXMLModlist(package_ids)
-    print(f"ModList: {workshop_collection_title} , created in: {rimpy_modlists_path}")
+    print(f"\nModList: {workshop_collection_title} , created in: {rimpy_modlists_path}")
