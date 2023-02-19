@@ -23,3 +23,7 @@ For now:
 # Changes
 
 If you want to make any changes please feel free to leave it as an issue and/or create a pull request.
+
+# Testing
+
+Tested on Windows 10 PC
