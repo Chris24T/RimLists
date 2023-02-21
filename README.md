@@ -15,7 +15,7 @@ For now:
 - Does not includes any non-steam mods (again, you can just manually add them after modlist creation)
 
 ## Requirements
-- is using the py script, >=python 3.9 is needed
+- if using the py script, >=python 3.9 is needed
 - Steam is installed
 - RimWorld is installed via Steam
 - All mods you want in the list must be downloaded - required since i cant find a way to get the mod package ids from the mod Steam ids
