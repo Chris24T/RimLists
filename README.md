@@ -2,6 +2,8 @@
 A simple script to create a RimWorld modlist from a steam workshop collection url.
 The modlist is intended for use with RimPy Mod Manager For Rimworld.
 
+
+
 # Usage
 
 1) Download all desired mods from the collection on steam and the release build .exe or the main.py script.
@@ -19,6 +21,10 @@ For now:
 - Steam is installed
 - RimWorld is installed via Steam
 - All mods you want in the list must be downloaded - required since i cant find a way to get the mod package ids from the mod Steam ids
+
+## Security
+
+In order to convert the steam mod ids in the workshop collection to package ids required by RimPy, access to the script needs filesystem access, as only the downloaded mod has this context.
 
 # Changes
 
