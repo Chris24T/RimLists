@@ -22,6 +22,13 @@ For now:
 - RimWorld is installed via Steam
 - All mods you want in the list must be downloaded - required since i cant find a way to get the mod package ids from the mod Steam ids
 
+Install the following:
+```
+pip install requests 
+pip install bs4
+pip install beautifulsoup4
+```
+
 ## Security
 
 In order to convert the steam mod ids in the workshop collection to package ids required by RimPy, access to the script needs filesystem access, as only the downloaded mod has this context.
