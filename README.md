@@ -2,7 +2,7 @@
 A simple script to create a RimWorld modlist from a steam workshop collection url.
 The modlist is intended for use with RimPy Mod Manager For Rimworld.
 
-
+It is most useful when you have many mods downloaded and dont want to sort through them all in order to recreate a workshop collection.
 
 # Usage
 
