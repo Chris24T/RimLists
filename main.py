@@ -1,3 +1,5 @@
+import xml.etree.ElementTree
+
 import requests
 from bs4 import BeautifulSoup
 import winreg
@@ -164,11 +166,18 @@ def findModPackageIds(ids):
             about_path = os.path.join(dir_path, item, "About\About.xml")
 
             if os.path.isfile(about_path):
-                tree = ET.parse(about_path)
-                root = tree.getroot()
-                packages.append(root.find("packageId").text.lower())
+                try:
+                    tree = ET.parse(about_path)
+                    root = tree.getroot()
+                    packages.append(root.find("packageId").text.lower())
+                except xml.etree.ElementTree.ParseError:
+                    print(f"There was an error in parsing 'About.xml' of mod with id: {item} ")
+                    print(f"Press enter to skip mod, or enter any key to abort process:")
+                    if input():
+                        print(f"Exiting...")
+                        exit(1)
             else:
-                print(f"Mod {item} is missing About.xml")
+                print(f"Mod {item} is missing an 'About.xml' or is not downloaded into {steam_workshop_content_path}, skipping...")
 
     return packages
 
